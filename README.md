@@ -1,0 +1,1 @@
+The purpose of this program is to calculating driven KMs for a friend's tax needs. It pulls shift times data (from work app) with travel duration/distance data (from an OBD-II logger), then highlights travel logs that correspond w/ shifts times, in addition to providing total travel for fiscal year.
