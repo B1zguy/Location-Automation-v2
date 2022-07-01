@@ -1,0 +1,11 @@
+Requirements:
+
+1) Odometre readings for start/end of trip
+Headings > Start Time	End Time, Odometer Start (km)	Odometer End (km), Total Odometre
+2) 
+
+
+Files to give:
+- Every trip, having work trips flagged.
+- Just work trips
+

@@ -1,0 +1,21 @@
+Later Considerations?
+- Use location column to quickly confirm data
+- Could % diff odometre be useful
+- Meaning Cost column
+- Inclusive of breaks
+
+TODO
+- Calc odemetre diff
+
+Links
+- Iterate extract data then store in frame: https://stackoverflow.com/a/42670389/7923512
+
+Learnings
+- Pandas defaults to month first when converting to datetime
+#start = pd.to_datetime('03-03-2021 00:00', dayfirst=True).datetime.date
+
+
+
+Ks total
+Busines
+POerson ks

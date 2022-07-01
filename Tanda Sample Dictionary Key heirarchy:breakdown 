@@ -1,0 +1,36 @@
+FIRST LEVEL
+
+'id'
+'user_id'
+'start'
+'finish'
+'status'
+'shifts'
+'updated_at'
+
+
+SECOND LEVEL > Shifts (JSON)
+
+'id'
+'timesheet_id'
+'user_id'
+'date'
+'start'
+'break_start'
+'break_finish'
+'break_length'
+'breaks'
+'finish'
+'department_id'
+'sub_cost_centre'
+'tag'
+'tag_id'
+'status'
+'metadata'
+'leave_request_id'
+'allowances'
+'approved_by'
+'approved_at'
+'award_interpretation'
+'updated_at'
+'record_id'
