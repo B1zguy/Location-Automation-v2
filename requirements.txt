@@ -1,0 +1,5 @@
+icecream==2.1.1
+pandas==1.2.5
+pip-chill==1.0.1
+requests==2.25.1
+xlwings==0.24.1
