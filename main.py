@@ -30,7 +30,7 @@ def locauto(csv_source, sheet_destination, start_date, end_date):
 
     # Fetches and processes timesheet data from Tanda
     click.echo('Processing timesheets ...')
-    ProcessedTime = tanda.get_Shifts(dates=[start_date, end_date])
+    ProcessedTime = tanda.get_Shifts(dates=[start_date, end_date]) # --> List Array
 
         ## Step 2 ##
     # List array where each list (a shift) contains rows that match logs in Excel

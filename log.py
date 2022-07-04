@@ -30,11 +30,11 @@ def FindMatches(shifts, log):
         start = entries[0]
         end = entries[1]
 
-        mask = (log['Start Time'] >= start) & (log['End Time'] <= end)
+        #####mask = (log['Start Time'] >= start) & (log['End Time'] <= end)
         #filtered = log.loc[mask]
         ##filtered = log.reindex(columns=mask) # .loc method depreciated or something
-        ##filtered = log.loc[log.index.intersection(mask)]
-        filtered = log.reindex(mask)
+        #filtered = log.loc[log.index.intersection(mask)]
+        filtered = log[(log['Start Time'] >= start) & (log['End Time'] <= end)]
         # ic(filtered)
         # Add two to every index of the filtered results
         # to align with Excel's row numbering
