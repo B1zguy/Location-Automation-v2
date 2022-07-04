@@ -10,7 +10,7 @@ from icecream import ic
 # Returns Pandas dataframe
 def LoadnClean(csv):
     columns = ['Start Time', 'End Time',  'Odometer Start (km)', 'Odometer End (km)']
-    df = pd.read_csv(csv, skiprows=10, usecols=columns)
+    df = pd.read_csv(csv, skiprows=7, usecols=columns)
     df['Travelled (Odometer)'] = df['Odometer End (km)'] - df['Odometer Start (km)']
 
     # Convert dates to datetime object (or is Timestamp obj - Pandas)
@@ -31,7 +31,10 @@ def FindMatches(shifts, log):
         end = entries[1]
 
         mask = (log['Start Time'] >= start) & (log['End Time'] <= end)
-        filtered = log.loc[mask]
+        #filtered = log.loc[mask]
+        ##filtered = log.reindex(columns=mask) # .loc method depreciated or something
+        ##filtered = log.loc[log.index.intersection(mask)]
+        filtered = log.reindex(mask)
         # ic(filtered)
         # Add two to every index of the filtered results
         # to align with Excel's row numbering
@@ -52,7 +55,8 @@ def Travels(data, indexes):
     for i in indexes:
         # Need to do double-sum() to get an int
         # Something about how pandas returns a dataframe
-        workTotal += dataOdom.loc[i].sum().sum()
+        #workTotal += dataOdom.loc[i].sum().sum()
+        workTotal += dataOdom.reindex(i).sum().sum() # .loc method depreciated or something
     personal = total - workTotal
 
     ocArray = [
@@ -62,7 +66,9 @@ def Travels(data, indexes):
     return ocArray
 
 def ExcelInject(highlights, summary, spreadsheet, log):
+    print('BEFOREEEEEE')
     wb = xw.Book(spreadsheet)
+    print('AFTERRRRRR')
     ws = wb.sheets['Results']
     # ws.clear_contents() # does not clear formatting
     ws.clear()
