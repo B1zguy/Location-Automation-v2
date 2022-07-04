@@ -1,1 +1,8 @@
-The purpose of this program is to calculating driven KMs for a friend's tax needs. It pulls shift times data (from work app) with travel duration/distance data (from an OBD-II logger), then highlights travel logs that correspond w/ shifts times, in addition to providing total travel for fiscal year.
+v2 is a reimplementation of the original Location Automation. This version reworks atleast half the codebase to sport:
+ 
+ - Command line interface
+ - Updated integration with car logger data
+ - Deprecation of Pandas methods
+ - Timezone awareness
+
+This was all done because the friend - whom requested the original project - wanted to use it for the current tax time.
