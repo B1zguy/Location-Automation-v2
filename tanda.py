@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime, timedelta
+import pytz # For converting to Perth timezone
 ## Development
 from pprint import pprint
 from icecream import ic
@@ -57,8 +58,14 @@ def Extraction(data):
         end = shift['finish']
         # Catch empty shift entries
         if start != None and end != None:
-            tmpStore.append((datetime.fromtimestamp(start), datetime.fromtimestamp(end)))
-
+            # Looks like time is given in local time ...
+            ##tmpStore.append((datetime.fromtimestamp(start), datetime.fromtimestamp(end)))
+            ###tmpStore.append((datetime.fromtimestamp(start, tz=pytz.timezone('Australia/Perth')), datetime.fromtimestamp(end, tz=pytz.timezone('Australia/Perth'))))
+            # Had to hardcode timezone offset just to push this out the door
+            # It was basing off local time before.
+            tmpStore.append((datetime.fromtimestamp(start) - timedelta(hours=2), datetime.fromtimestamp(end) - timedelta(hours=2)))
+            print(tmpStore)
+            print('')
         else:
             tURL = 'my.tanda.co/timesheets/'
             tSheetID = tURL + str(shift['timesheet_id'])

@@ -46,6 +46,7 @@ def FindMatches(shifts, log):
 
 # Calculating and prepare Odometer data
 def Travels(data, indexes):
+    global personal
     workTotal = 0
     total = data['Travelled (Odometer)'].sum()
     # Shift Odometer's index so it matches with Excel
@@ -53,10 +54,24 @@ def Travels(data, indexes):
     # Needed to instantiate new var so orig dataframe isn't messed w/
     dataOdom = data['Travelled (Odometer)'].shift(2)
     for i in indexes:
+        print(i)
         # Need to do double-sum() to get an int
         # Something about how pandas returns a dataframe
         #workTotal += dataOdom.loc[i].sum().sum()
-        workTotal += dataOdom.reindex(i).sum().sum() # .loc method depreciated or something
+        ''' 
+        a = dataOdom.isin([i])
+        b = dataOdom.isin([i]).sum()
+        c = dataOdom.isin([i]).sum().sum()
+        print(a)
+        print(b)
+        print(c)
+                workTotal += c
+        '''
+        #workTotal += dataOdom.isn([i]).sum().sum() # .loc method depreciated or something
+        #u = dataOdom.loc([dataOdom.index.intersection(i)]).reindex(i).sum().sum()
+        #print(u)
+        #workTotal += dataOdom.reindex([i]).sum().sum()
+        workTotal += dataOdom[i].sum().sum()
     personal = total - workTotal
 
     ocArray = [

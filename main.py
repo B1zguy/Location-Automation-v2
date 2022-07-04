@@ -21,6 +21,8 @@ def locauto(csv_source, sheet_destination, start_date, end_date):
     [START_DATE]: \t Defaults to 2021-07-01
     [END_DATE]: \t Defaults to 2022-06-30
 
+    \n
+    Files must exist, for now.
     """
         ## Step 1 ##
 
